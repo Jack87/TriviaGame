@@ -24,7 +24,7 @@
 }
   .ABCs {
     font-family:  "kg_happy", "Helvetica Neue", "Helvetica", sans-serif; 
-    font-size: 25px;
+    font-size: 36px;
     color: #cddb0bb7;
     text-align: center;
     margin-top: 20px;
@@ -42,6 +42,7 @@
     transform: skew(10deg);
     animation: shake 2.5s infinite;
     animation-direction: alternate;
+    z-index: 50;
 }
 
 @keyframes shake {
@@ -78,7 +79,7 @@ html, body {
     width: 150px;
     height: 150px;
     left: 100px;
-    top: -200px;
+    top: -240px;
     /* display: flex; */
     background-size: contain;
     margin: 0 auto 0 auto;
@@ -128,7 +129,7 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  top: -70px;
+  top: -120px;
 }
 
 #chalkBoard:after {
