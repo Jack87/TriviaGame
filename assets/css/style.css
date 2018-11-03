@@ -27,16 +27,17 @@
     font-size: 25px;
     color: #cddb0bb7;
     text-align: center;
-
+    margin-top: 20px;
   }
   section {
     display: block;
     height: 100vh; }
   .logo {
     position: relative;
-    top: 25px;
+    top: -50px;
+    right: 50px;
     opacity: 0.75;
-    height: 200px;
+    height: 300px;
     width: auto; 
     transform: skew(10deg);
     animation: shake 2.5s infinite;
@@ -68,14 +69,16 @@ html, body {
 }
 
 .timer {
-    height: 40px
+    position: relative;
+    height: 40px;
+    top: 50 px;
 }
 #clock {
     position: relative;
     width: 150px;
     height: 150px;
     left: 100px;
-    top: -150px;
+    top: -200px;
     /* display: flex; */
     background-size: contain;
     margin: 0 auto 0 auto;
@@ -105,41 +108,7 @@ html, body {
     background: url(../images/hourhand.png)no-repeat center/contain;
     z-index: 1;
   }
-/* #clock {
-    position: relative;
-    display: block;
-    top: 50px;
-    height: 100px;
-    width: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 20px auto 0 auto;
-    background: url(../images/clockface.png);
-    list-style: none;
-  }
-  
-  #sec, #min, #hour {
-    position: absolute;
-    height: 100;
-    width: auto;
-    top: 0px;
-    left: 285px;
-  }
-  
-  #sec {
-    background: url(../images/sechand.png);
-    z-index: 3;
-  }
-     
-  #min {
-    background: url(../images/minhand.png);
-    z-index: 2;
-  }
-     
-  #hour {
-    background: url(../images/hourhand.png);
-    z-index: 1;
-  } */
+
 #chalkBoard {
   font-size: 40px;
   color: #E8E8E8;
@@ -159,6 +128,7 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  top: -70px;
 }
 
 #chalkBoard:after {
@@ -169,10 +139,10 @@ html, body {
   width: 50px;
   height: 8px;
   background: #f1f1f1;
-  top: 80%;
+  top: 82%;
   margin-top: 75px;
   margin-right: 60px;
-  right: 20%;
+  right: 25%;
   box-shadow: inset 0 -4px 1px rgba(0, 0, 0, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.3)
 }
 
