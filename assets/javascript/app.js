@@ -167,7 +167,7 @@ var unanswered
 var questionTimer;
 var answerTimer;
 var questionTimeLeft = 20;
-var answerTimeLeft = 4;
+var answerTimeLeft = 5;
 // Ready to play
 $(document).ready(function(){
     startGame();
