@@ -157,6 +157,11 @@ var questions = [
     }
 ];
 console.log(questions);
+// Sounds
+var rightSound = "assets/sounds/right.mp3"
+var wrongSound = "assets/sounds/wrong.mp3"
+var endSound = "assets/sounds/end.mp3"
+var pressSound = "assets/sounds/press.mp3"
 // Question Tracker
 var currentQuestion;
 // Answer Tracker
@@ -186,11 +191,13 @@ function startGame() {
     $(startButton).addClass("btn, btn-success")
                   .attr("id", "start")
                   .html("I'll prove I'm smarter!");
-    $("#chalkBoard").html("<h2 id='startMessage' class='h2'>Hey you! <br> Do you think you're smarter than a 5 year old?</h2><br>");
+    $("#chalkBoard").html("<h2 id='startMessage' class='h2'>Hey you! <br> " +
+    "Do you think you're smarter than a 5 year old and can you prove it?</h2><br>");
     // var startMessage = ["Hey you!","Do you think you're smarter than a 5 year old?"]
     // setTypeWriter(JSON.stringify(startMessage), 'startMessage')
     $("#chalkBoard").append(startButton);
     $(startButton).click(function(){
+        playSound(pressSound);
         askQuestion();
     });
 };
@@ -225,6 +232,7 @@ function askQuestion() {
         });
     } else {
         // Gameover
+        playSound(endSound);
         var output = "<h2 id='goMessage' class='h2 typewrite'>Now we can see how smart you really are.</h2>";
         // var goMessage = ["Now we can see how smart you really are."]
         // var goMessageID = "goMessage"
@@ -240,12 +248,14 @@ function askQuestion() {
         $("#chalkBoard").append(resetButton);
         // setTypeWriter(goMessage, 'goMessage')
         $(resetButton).click(function(){
+            playSound(pressSound);
             startGame();
         });
     };
 };
 function rightAnswer(q) {
     console.log("right answer");
+    playSound(rightSound);
     startAnswerTimer();
     correct++;
     var output = "<h1 class='h1'><b>Correct!</h1>";
@@ -256,6 +266,7 @@ function rightAnswer(q) {
 function wrongAnswer(q, outOfTime) {
     console.log("wrong answer");
     clearInterval(questionTimer);
+    playSound(wrongSound);
     startAnswerTimer();
     var output;
     if (outOfTime == true) {
@@ -292,6 +303,19 @@ function startAnswerTimer(){
     askQuestion();
     }, answerTimeLeft * 1000);
 }
+
+// Play Sounds //
+function playSound(src){
+    var audio = document.createElement('audio');
+    audio.style.display = "none";
+    audio.src = src;
+    // audio.autoplay = true;
+    audio.play();
+    audio.onended = function(){
+        audio.remove(); //Remove when played.
+    };
+    document.body.appendChild(audio);
+}; //End Play Sound Function //
 
 /* ==============================================
    Following code is to wrtie text out using 
