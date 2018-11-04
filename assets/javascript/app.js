@@ -158,11 +158,11 @@ var questions = [
 ];
 console.log(questions);
 // Question Tracker
-var currentQuestion
+var currentQuestion;
 // Answer Tracker
-var correct
-var incorrect
-var unanswered
+var correct;
+var incorrect;
+var unanswered;
 // Time Tracker
 var questionTimer;
 var answerTimer;
@@ -193,16 +193,16 @@ function startGame() {
     $(startButton).click(function(){
         askQuestion();
     });
-}
+};
 function askQuestion() {
     $("#chalkBoard").empty();
     clearTimeout(answerTimer);
     if(currentQuestion < questions.length) {
         var q = questions[currentQuestion];
-        var qNum = currentQuestion + 1;        
+        var qNum = currentQuestion + 1;             
         console.log(questions[0]);
         console.log(q.prompt);
-        var output = "<h4 class='timer'> Time remaining: <span>" + questionTimeLeft + "</span></h4>";
+        var output = "<h4 class='chalkTimer'> Time remaining: <span>" + questionTimeLeft + "</span></h4>";
         output += "<h1 class='h1'><b>" + q.category + "</b></h1>";
         output += "<h3 class='h3'>" + qNum + ". " + q.prompt + "</h3>";
         output += "<div class='list-group'>";
@@ -212,40 +212,17 @@ function askQuestion() {
         output += "<button id='d' type='button' style='background-color:rgba(51, 170, 51, .1)' class='list-group-item btn-outline-info h5 text-white text-left  answer'>d. " + q.answers.d + "</button>";
         output += "</div>";
         $("#chalkBoard").html(output);
-        currentQuestion++;
+        startQuestionTimer(questionTimeLeft, q);
+        currentQuestion++;        
         $(".answer").on("click", function() {
         clearInterval(questionTimer);
         var userAnswer = $(this).attr("id");
-        startAnswerTimer();
-        if (q.answers.r == q.answers[userAnswer]) {
-            rightAnswer(q);
-        } else {
-            wrongAnswer(q);            
-        };
-        });
-        function rightAnswer(q) {
-            console.log("right answer");
-            correct++;
-            var output = "<h1 class='h1'><b>Correct!</h1>";
-            output += "<h3>Yup that's right! 5 year old ain't got nothing on you! </h3>";
-            output += "<img src='./assets/images/" + q.correctGif + "'>";
-            $("#chalkBoard").html(output);
-        };
-        function wrongAnswer(q, outOfTime) {
-            console.log("wrong answer");
-            var output;
-            if (outOfTime == true) {
-                output = "<h1 class='h1'><b>Out of Time!</b></h1>";
-                unanswered++;
+            if (q.answers.r == q.answers[userAnswer]) {
+                rightAnswer(q);
             } else {
-                output = "<h1 class='h1'><b>Wrong!</h1>"
-                incorrect++;
-            }
-            output += "<h5 class='h5'>Really? Come on now; 5 year olds know that one!</h5>";
-            output += "<h5 class='h5'>The answer is: " + q.answers.r + "</h5>";
-            output += "<img src='./assets/images/" + q.wrongGif + "'>";
-            $("#chalkBoard").html(output);
-        };
+                wrongAnswer(q);
+            };
+        });
     } else {
         // Gameover
         var output = "<h2 id='goMessage' class='h2 typewrite'>Now we can see how smart you really are.</h2>";
@@ -265,7 +242,36 @@ function askQuestion() {
         $(resetButton).click(function(){
             startGame();
         });
+    };
+};
+function rightAnswer(q) {
+    console.log("right answer");
+    startAnswerTimer();
+    correct++;
+    var output = "<h1 class='h1'><b>Correct!</h1>";
+    output += "<h3>Yup that's right! 5 year old ain't got nothing on you! </h3>";
+    output += "<img src='./assets/images/" + q.correctGif + "'>";
+    $("#chalkBoard").html(output);
+};
+function wrongAnswer(q, outOfTime) {
+    console.log("wrong answer");
+    clearInterval(questionTimer);
+    startAnswerTimer();
+    var output;
+    if (outOfTime == true) {
+        output = "<h1 class='h1'><b>Out of Time!</b></h1>";
+        unanswered++;
+    } else {
+        output = "<h1 class='h1'><b>Wrong!</h1>";
+        incorrect++;
     }
+    output += "<h5 class='h5'>Really? Come on now; 5 year olds know that one!</h5>";
+    output += "<h5 class='h5'>The answer is: " + q.answers.r + "</h5>";
+    output += "<img src='./assets/images/" + q.wrongGif + "'>";
+    $("#chalkBoard").html(output);
+};
+function alertMe(text) {
+    alert(text);    
 }
 function startQuestionTimer(t, q) {
     // start countdown
@@ -274,19 +280,27 @@ function startQuestionTimer(t, q) {
             wrongAnswer(q, true);
             return;
         } else {
-            $("h4.timer span").text(t);
             t--;
+            var output = "<h4 class='chalkTimer h4'> Time remaining: <span>" + t + "</span></h4>";
+            $(".chalkTimer").html(output);            
         }
     }, 1000);
 }
-
 function startAnswerTimer(){
     console.log(answerTimeLeft);
     answerTimer = setTimeout(function(){
     askQuestion();
-    },answerTimeLeft*1000);
+    }, answerTimeLeft * 1000);
 }
 
+/* ==============================================
+   Following code is to wrtie text out using 
+   setTimeout() to mimic hand writing to 
+   chalkboard. It is buggy however and ran
+   out of time to fully implement. 
+   Almost done though! 
+   ./assets/testing/test.html test sample of this
+   ==============================================*/
 // var aText = new Array("");
 // console.log(aText);
 // var iSpeed // time delay of print out
