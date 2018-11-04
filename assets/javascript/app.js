@@ -229,9 +229,9 @@ function askQuestion() {
         // var goMessage = ["Now we can see how smart you really are."]
         // var goMessageID = "goMessage"
         output += "<table><tbody><tr><td class='left'>";
-        output += "Correct: </td><td class='left'>  " + correct + "</td></tr><tr><td class='left'>";
-        output += "Incorrect: </td><td class='left'>  " + incorrect + "</td></tr><tr><td class='left'>";
-        output += "Unanswered: </td><td class='left'>  " + unanswered + "</td></tr></tbody></table><br>";
+        output += "Correct: </td><td class='left'>" + correct + "</td></tr><tr><td class='left'>";
+        output += "Incorrect: </td><td class='left'>" + incorrect + "</td></tr><tr><td class='left'>";
+        output += "Unanswered: </td><td class='left'>" + unanswered + "</td></tr></tbody></table><br>";
         var resetButton = $("<button>");
         $(resetButton).addClass("btn, btn-success")
                       .attr("id", "reset")
