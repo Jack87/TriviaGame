@@ -9,6 +9,8 @@ The questions were written by a real teacher (Thanks Catalina!) who teaches kind
 
 Each correct answer is accompanied with a corresponding gif. All wrong answers have a gif corresponding with the questions. These are really fun! Even if you get them all right go back and play again to see all the wrong answer gifs (we know you meant to click the wrong answer don't worry no shame here!). If you missed some take note of the correct answer on the answer prompt screen and take another shot at it to see the gif.
 
+[Click here to Play Now!](https://jack87.github.io/TriviaGame/)
+
 ![screenshot](https://raw.githubusercontent.com/Jack87/TriviaGame/master/assets/images/screenShotTrivia.PNG)
 
 ### Good Luck! Have fun!
