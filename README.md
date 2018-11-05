@@ -3,7 +3,7 @@
 ### JavaScript trivia game assignment for timer. Mini trivia questions for kindergarten level. 
 Trivia Game JavaScript Homework 
 
-Test you wits on these kindergarten level questions. You'll be surprised the kind of things these little ones might know and that you might not!
+Test your wits on these kindergarten level questions. You'll be surprised the kind of things these little ones might know and that you might not!
 
 The questions were written by a real teacher (Thanks Catalina!) who teaches kindergarten to 5 year olds. 
 
